@@ -1,0 +1,13 @@
+// delete at end
+#include <stdio.h>
+#define CAP 10
+int main() {
+    printf("Nmae:Pushpa L\n USN:1SV24CS108\n");
+    int a[]={10,20,40,69,78,54,90};
+    int n=7;
+    n--;
+    for(int i=0;i<n;i++){
+        printf("%d ",a[i]);
+    }
+    return 0;
+}
