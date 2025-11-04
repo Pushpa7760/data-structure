@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main() {
+int*arr;
+int n,i,sum=0;
+float max;
+printf("enter the size of the array");
+scanf("%d",&n);
+arr=(int *) malloc (n * sizeof(int));
+printf("enter the elements of array\n");
+for(i=0;i<n;i++)
+{
+scanf("%d",&arr[i]);
+}
+for(i=0;i<n;i++)
+{
+printf("\n %d",arr[i]);
+sum=sum+arr[i];
+max=sum/n;
+}
+printf("\nthe sum of N natural number is %d\n",sum);
+printf("the maximum of N natural number is %.2f",max);
+return 0;
+}
