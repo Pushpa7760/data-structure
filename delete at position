@@ -1,0 +1,24 @@
+// delete at position
+#include <stdio.h>
+#define CAP 10
+
+int main() {
+    printf("Name: Pushpa L\nUSN: 1SV24CS108\n");
+    int a[] = {10, 20, 40, 69, 78, 54, 90};
+    int n = 7;
+    int pos, i;
+    printf("Enter the position : ");
+    scanf("%d", &pos);
+    if (pos < 0 || pos >= n) {
+        printf("Invalid position!\n");
+        return 0;
+    }
+    for (i = pos; i < n - 1; i++) {
+        a[i] = a[i + 1];
+    }
+    n--;
+    printf("Array after deletion:\n");
+    for (i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
+    return 0;
