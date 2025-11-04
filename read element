@@ -1,0 +1,36 @@
+#include<stdio.h>
+int main()
+{
+    int a[]={10,20,56,75,89,87,70,30};
+    int n=sizeof(a)/sizeof(a[0]);
+    printf("%d\n",n);
+    int index=4;
+    if(index>=0 && index<n)
+    {
+        int val=a[index];
+        printf("value %d and index %d ",val,index);
+    }
+    else{
+        printf("not found");
+    }
+    return 0;
+}
+
+
+#include<stdio.h>
+int main()
+{
+    int a[]={10,20,56,75,89,87,70,30};
+    int n=sizeof(a)/sizeof(a[0]);
+    printf("%d\n",n);
+    int index=0;
+    if(index>=0 && index<n)
+    {
+        int val=index;
+        printf("value %d and index %d ",a[val],index);
+    }
+    else{
+        printf("not found");
+    }
+    return 0;
+}
