@@ -1,0 +1,26 @@
+// inserted at postion
+#include <stdio.h>
+#define CAP 10  
+int main() {
+    printf("Name: Pushpa L\nUSN: 1SV24CS108\n");
+
+    int a[CAP] = {10, 20, 40, 69, 78, 54, 90};
+    int n = 7;  
+    int pos, element, i;
+    printf("\nEnter the position to insert");
+    scanf("%d", &pos);
+
+    if (pos < 0 || pos > n) {
+        printf("Invalid position!\n");
+        return 0;
+    }
+    printf("Enter the element to insert: ");
+    scanf("%d", &element);
+    for (i = n; i > pos; i--) {
+        a[i] = a[i - 1];
+    }
+    a[pos] = element;
+    n++;
+    for (i = 0; i < n; i++) {
+        printf("%d ", a[i]);
+    }
