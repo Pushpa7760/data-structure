@@ -1,0 +1,34 @@
+#include <stdio.h>
+#define SIZE 5
+
+int queue[SIZE];
+int front = -1, rear = -1;
+
+void enqueue(int value) {
+    if (rear == SIZE - 1) {
+        printf("Queue is full\n");
+    } else {
+        if (front == -1)
+            front = 0;
+        rear++;
+        queue[rear] = value;
+        printf("%d inserted\n", value);
+    }
+}
+
+void dequeue() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+    } else {
+        printf("Deleted element is %d\n", queue[front]);
+        front++;
+    }
+}
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+    dequeue();
+    return 0;
+}
