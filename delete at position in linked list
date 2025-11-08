@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Define structure for Node
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* head = NULL;
+
+// Function to insert node at end (for testing)
+void insertEnd(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (!newNode) {
+        printf("Memory allocation failed\n");
+        return;
+    }
+    newNode->data = value;
+    newNode->next = NULL;
+
+    if (head == NULL) {
+        head = newNode;
+        return;
+    }
+
+    struct Node* temp = head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+}
+
+// Function to delete node at specific position
+void deletePos(int pos) {
+    if (head == NULL) {
+        printf("List is empty, nothing to delete.\n");
+        return;
+    }
+
+    int length = 0;
+    struct Node* countNode = head;
+    while (countNode != NULL) {
+        length++;
+        countNode = countNode->next;
+    }
+
+    if (pos < 1 || pos > length) {
+        printf("Invalid position! (List size: %d)\n", length);
+        return;
+    }
+
+    // Case 1: Delete first node
+    if (pos == 1) {
+        struct Node* temp = head;
+        head = head->next;
+        printf("Deleted node at position %d with value: %d\n", pos, temp->data);
+        free(temp);
+        return;
+    }
+
+    // Case 2: Delete node in middle or end
+    struct Node* temp = head;
+    struct Node* prev = NULL;
+
+    // Traverse to (pos - 1)th node
+    for (int i = 1; i < pos; i++) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // Now temp points to node to delete
+    prev->next = temp->next;
+    printf("Deleted node at position %d with value: %d\n", pos, temp->data);
+    free(temp);
+}
+
+// Function to display linked list
+void display() {
+    struct Node* temp = head;
+    if (temp == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+// Main function
+int main() {
+    insertEnd(10);
+    insertEnd(20);
+    insertEnd(30);
+    insertEnd(40);
+    insertEnd(50);
+
+    printf("Initial Linked List:\n");
+    display();
+
+    printf("\nDeleting node at position 1...\n");
+    deletePos(1);
+    display();
+
+    printf("\nDeleting node at position 3...\n");
+    deletePos(3);
+    display();
+
+    printf("\nDeleting node at position 5 (invalid)...\n");
+    deletePos(5);
+
+    return 0;
+}
